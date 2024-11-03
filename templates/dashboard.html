@@ -1,0 +1,70 @@
+<!-- Fast_CRM/templates/dashboard.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+<h2>Dashboard de Clientes</h2>
+
+<a href="{{ url_for('create_client') }}" class="btn btn-success mb-2">Criar Cliente</a>
+{% if session.get('is_admin') %}
+<a href="{{ url_for('create_user') }}" class="btn btn-info mb-2">Criar Usuário</a>
+{% endif %}
+
+<div class="row">
+    {% if clients %}
+        {% for client in clients %}
+        <div class="col-md-4">
+            <div class="card mb-3 client-card shadow-sm" 
+                 data-id="{{ client.id }}">
+                 
+                <!-- Exibição da imagem enviada ou avatar dinâmico -->
+                <div class="card-img-top">
+                    <img src="{{ client.image_url or 'https://via.placeholder.com/150?text=' + client.name[:1] }}"
+                         alt="Imagem do Cliente"
+                         class="img-fluid rounded-circle mt-3"
+                         style="width: 150px; height: 150px; object-fit: cover; display: block; margin: 0 auto;">
+                </div>
+
+                <div class="card-inner p-3">
+                    <div class="status"><span>👋</span> New</div>
+                    <h1 class="name">{{ client.name }}</h1>
+                    <p class="text-muted">{{ client.sector }}</p>
+                    <ul class="list-unstyled">
+                        <li><strong>Email:</strong> {{ client.email }}</li>
+                        <li><strong>Telefone:</strong> {{ client.phone }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-center">Nenhum cliente cadastrado ainda.</p>
+    {% endif %}
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="clientModal" tabindex="-1" aria-labelledby="clientModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="clientModalLabel">Informações do Cliente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Nome:</strong> <span id="modalClientName"></span></p>
+                <p><strong>Email:</strong> <span id="modalClientEmail"></span></p>
+                <p><strong>Setor:</strong> <span id="modalClientSector"></span></p>
+                <p><strong>Telefone:</strong> <span id="modalClientPhone"></span></p>
+                <p><strong>Data da Reunião:</strong> <span id="modalMeetingDate"></span></p>
+                <p><strong>Link da Reunião:</strong> <a href="#" id="modalVideoLink" target="_blank"></a></p>
+                <p><strong>Comentários:</strong> <span id="modalComments"></span></p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" id="editClientButton" class="btn btn-warning">Editar</a>
+                <button type="button" class="btn btn-danger" id="deleteClientButton">Excluir</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

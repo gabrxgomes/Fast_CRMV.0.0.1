@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Criar Usuário</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="username" class="form-label">Nome de Usuário</label>
+        <input type="text" class="form-control" name="username" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Senha</label>
+        <input type="password" class="form-control" name="password" required>
+    </div>
+    <div class="mb-3">
+        <label for="sector" class="form-label">Setor</label>
+        <input type="text" class="form-control" name="sector" required>
+    </div>
+    <div class="mb-3">
+        <label for="manager_id" class="form-label">Gestor Associado</label>
+        <select class="form-control" name="manager_id">
+            <option value="">Nenhum</option>
+            {% for user in users %}
+            <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="is_admin" class="form-check-label">Administrador</label>
+        <input type="checkbox" class="form-check-input" name="is_admin">
+    </div>
+    <button type="submit" class="btn btn-primary">Criar Usuário</button>
+</form>
+{% endblock %}

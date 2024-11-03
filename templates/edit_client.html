@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Editar Cliente</h2>
+
+<form method="POST">
+    <div class="mb-3">
+        <label for="clientName" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="clientName" name="name" value="{{ client.name }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="clientEmail" class="form-label">Email</label>
+        <input type="email" class="form-control" id="clientEmail" name="email" value="{{ client.email }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="clientSector" class="form-label">Setor</label>
+        <input type="text" class="form-control" id="clientSector" name="sector" value="{{ client.sector }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="clientPhone" class="form-label">Telefone</label>
+        <input type="text" class="form-control" id="clientPhone" name="phone" value="{{ client.phone }}">
+    </div>
+    <div class="mb-3">
+        <label for="meetingDate" class="form-label">Data da Reunião</label>
+        <input type="date" class="form-control" id="meetingDate" name="meeting_date" value="{{ client.meeting_date }}">
+    </div>
+    <div class="mb-3">
+        <label for="videoLink" class="form-label">Link da Reunião (Meet)</label>
+        <input type="url" class="form-control" id="videoLink" name="video_link" value="{{ client.video_link }}">
+    </div>
+    <div class="mb-3">
+        <label for="comments" class="form-label">Comentários</label>
+        <textarea class="form-control" id="comments" name="comments" rows="3">{{ client.comments }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+</form>
+{% endblock %}

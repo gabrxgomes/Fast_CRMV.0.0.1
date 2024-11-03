@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    background-color: #eee;
+}
+
+.card {
+    --avatar-img: url(https://via.placeholder.com/150);
+    position: relative;
+    width: 400px; /* Ajuste do tamanho para um card menor */
+    height: min-content;
+    font-family: Poppins, sans-serif;
+    border-radius: 15px; /* Bordas mais suaves */
+    overflow: hidden;
+    background: radial-gradient(#453F61, #211E2A);
+    margin-bottom: 15px; /* Espaço entre os cards */
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    width: calc(100% - 40px); /* Ajuste proporcional para o tamanho menor */
+    height: 80%; /* Redução para se adequar ao tamanho menor */
+    background: var(--avatar-img) no-repeat 50% 50% / cover;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    filter: blur(20px) brightness(0.8) saturate(1.5);
+}
+
+.card-inner {
+    position: relative;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 8px;
+    padding: 12px 16px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.card-inner .status {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 50px;
+}
+
+.card-inner .avatar {
+    background: var(--avatar-img) no-repeat 50% 50% / cover;
+    width: 100px; /* Reduzido para um card menor */
+    height: 100px; /* Mantém a proporção 1:1 */
+    border-radius: 50%;
+    margin: 0 auto 10px; /* Centraliza e adiciona espaço abaixo */
+}
+
+.card-inner h1 {
+    font-size: 1.25rem; /* Título mais compacto */
+    text-align: center;
+}
+
+.card-inner p {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.card-inner ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.card-inner ul li {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 5px 10px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+}

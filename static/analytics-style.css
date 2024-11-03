@@ -1,0 +1,22 @@
+/* analytics-style.css */
+
+/* Estilos para a página de análise (analytics.html) */
+.card {
+    background: none; /* Remova o fundo cinza */
+    border-radius: 15px; /* Bordas suaves */
+    overflow: hidden;
+    margin-bottom: 15px; /* Espaçamento entre os cards */
+}
+
+.card::before {
+    content: none; /* Remova o efeito de blur */
+}
+
+.card-header {
+    background-color: #007bff; /* Cor azul sólida para o cabeçalho */
+    color: white; /* Texto branco para contraste */
+}
+
+.card-body {
+    color: rgba(255, 255, 255, 0.8); /* Cor do texto */
+}
