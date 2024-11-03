@@ -2,7 +2,7 @@
 {% block content %}
 <h2>Editar Cliente</h2>
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="clientName" class="form-label">Nome</label>
         <input type="text" class="form-control" id="clientName" name="name" value="{{ client.name }}" required>
@@ -30,6 +30,10 @@
     <div class="mb-3">
         <label for="comments" class="form-label">Comentários</label>
         <textarea class="form-control" id="comments" name="comments" rows="3">{{ client.comments }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Imagem do Cliente</label>
+        <input type="file" class="form-control" name="image" accept="image/*">
     </div>
     <button type="submit" class="btn btn-primary">Salvar Alterações</button>
 </form>

@@ -12,12 +12,12 @@ body {
 }
 
 .card {
-    --avatar-img: url(https://via.placeholder.com/150);
+    --avatar-img: url('https://via.placeholder.com/150'); /* Imagem padrão */
     position: relative;
-    width: 400px; /* Ajuste do tamanho para um card menor */
+    width: 400px; /* Ajuste do tamanho do card */
     height: min-content;
-    font-family: Poppins, sans-serif;
-    border-radius: 15px; /* Bordas mais suaves */
+    font-family: 'Poppins', sans-serif;
+    border-radius: 15px; /* Bordas suaves */
     overflow: hidden;
     background: radial-gradient(#453F61, #211E2A);
     margin-bottom: 15px; /* Espaço entre os cards */
@@ -26,14 +26,14 @@ body {
 .card::before {
     content: '';
     position: absolute;
-    top: -20%;
+    top: -25%; /* Ajuste para posicionar o efeito */
     left: 50%;
-    width: calc(100% - 40px); /* Ajuste proporcional para o tamanho menor */
-    height: 80%; /* Redução para se adequar ao tamanho menor */
-    background: var(--avatar-img) no-repeat 50% 50% / cover;
+    width: calc(100% - 60px);
+    height: 100%;
+    background: var(--avatar-img) no-repeat 50% 0% / cover;
     border-radius: 50%;
     transform: translateX(-50%);
-    filter: blur(20px) brightness(0.8) saturate(1.5);
+    filter: blur(30px) brightness(0.8) saturate(1.5);
 }
 
 .card-inner {
@@ -57,10 +57,10 @@ body {
 
 .card-inner .avatar {
     background: var(--avatar-img) no-repeat 50% 50% / cover;
-    width: 100px; /* Reduzido para um card menor */
-    height: 100px; /* Mantém a proporção 1:1 */
+    width: 150px; /* Tamanho ajustado do avatar */
+    height: 150px; /* Adicionei uma altura fixa para o avatar */
     border-radius: 50%;
-    margin: 0 auto 10px; /* Centraliza e adiciona espaço abaixo */
+    margin: 0 auto 10px; /* Centraliza o avatar e adiciona espaço */
 }
 
 .card-inner h1 {

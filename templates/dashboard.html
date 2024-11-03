@@ -1,5 +1,3 @@
-<!-- Fast_CRM/templates/dashboard.html -->
-
 {% extends 'base.html' %}
 {% block content %}
 <h2>Dashboard de Clientes</h2>
@@ -14,18 +12,11 @@
         {% for client in clients %}
         <div class="col-md-4">
             <div class="card mb-3 client-card shadow-sm" 
+                 style="--avatar-img: url('{{ client.image_url or 'https://via.placeholder.com/150?text=' + client.name[:1] }}');"
                  data-id="{{ client.id }}">
-                 
-                <!-- Exibição da imagem enviada ou avatar dinâmico -->
-                <div class="card-img-top">
-                    <img src="{{ client.image_url or 'https://via.placeholder.com/150?text=' + client.name[:1] }}"
-                         alt="Imagem do Cliente"
-                         class="img-fluid rounded-circle mt-3"
-                         style="width: 150px; height: 150px; object-fit: cover; display: block; margin: 0 auto;">
-                </div>
-
                 <div class="card-inner p-3">
                     <div class="status"><span>👋</span> New</div>
+                    <div class="avatar"></div>
                     <h1 class="name">{{ client.name }}</h1>
                     <p class="text-muted">{{ client.sector }}</p>
                     <ul class="list-unstyled">
@@ -66,5 +57,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

@@ -64,7 +64,6 @@ def delete_client(client_id):
 
 @app.route('/edit_client/<int:client_id>', methods=['GET', 'POST'])
 def edit_client(client_id):
-    """Rota para editar informações do cliente."""
     client = Client.query.get(client_id)
     if not client:
         flash("Cliente não encontrado.")
@@ -78,6 +77,15 @@ def edit_client(client_id):
         client.meeting_date = request.form.get('meeting_date')
         client.video_link = request.form.get('video_link')
         client.comments = request.form.get('comments')
+
+        # Verificar se uma nova imagem foi enviada
+        if 'image' in request.files:
+            file = request.files['image']
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(filepath)
+                client.image_url = url_for('static', filename=f'uploads/{filename}', _external=True)
 
         db.session.commit()
         flash(f"Cliente '{client.name}' atualizado com sucesso!")
