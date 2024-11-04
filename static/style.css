@@ -87,3 +87,11 @@ body {
     border-radius: 50px;
     font-size: 0.8rem;
 }
+
+.logo {
+    width: 50px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    object-fit: contain;
+    display: inline-block;
+}
+
