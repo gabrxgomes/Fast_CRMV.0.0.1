@@ -27,6 +27,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link notification-bell" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-bell"></i>
+                        <span class="notification-count" id="notificationCount">0</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown" id="notificationList">
+                        <li class="dropdown-item text-center">Sem notificações</li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
@@ -57,6 +66,28 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const monthlyData = JSON.parse('{{ monthly_data | tojson | safe }}');
+
+                        // Função para carregar notificações
+                        fetch('/notifications')
+                .then(response => response.json())
+                .then(data => {
+                    const notificationList = document.getElementById('notificationList');
+                    const notificationCount = document.getElementById('notificationCount');
+
+                    if (data.notifications.length > 0) {
+                        notificationList.innerHTML = '';
+                        data.notifications.forEach(notification => {
+                            const item = document.createElement('li');
+                            item.className = 'dropdown-item';
+                            item.textContent = notification;
+                            notificationList.appendChild(item);
+                        });
+                        notificationCount.textContent = data.notifications.length;
+                    } else {
+                        notificationCount.textContent = 0;
+                    }
+                })
+                .catch(error => console.error('Erro ao carregar notificações:', error));
 
             // Loop para criar um gráfico para cada mês
             Object.entries(monthlyData).forEach(([month, { labels, data }], index) => {

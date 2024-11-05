@@ -1,5 +1,11 @@
 /* analytics-style.css */
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-weight: 500;
+}
 /* Estilos para a página de análise (analytics.html) */
 .card {
     background: none; /* Remova o fundo cinza */

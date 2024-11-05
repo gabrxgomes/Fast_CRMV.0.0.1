@@ -2,11 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 body {
     min-height: 100vh;
-    display: grid;
+    /*display: grid;*/
     place-content: center;
     background-color: #eee;
 }
@@ -19,7 +21,8 @@ body {
     font-family: 'Poppins', sans-serif;
     border-radius: 15px; /* Bordas suaves */
     overflow: hidden;
-    background: radial-gradient(#453F61, #211E2A);
+    /* background: radial-gradient(#453F61, #211E2A);*/
+    background: radial-gradient(#ffffff, #5a5a5a);
     margin-bottom: 15px; /* Espaço entre os cards */
 }
 
@@ -50,7 +53,7 @@ body {
     position: absolute;
     right: 12px;
     top: 12px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(100, 100, 100);
     padding: 5px 10px;
     border-radius: 50px;
 }
@@ -71,6 +74,7 @@ body {
 .card-inner p {
     font-size: 0.9rem;
     text-align: center;
+    
 }
 
 .card-inner ul {
@@ -82,7 +86,7 @@ body {
 }
 
 .card-inner ul li {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgb(119, 119, 119);
     padding: 5px 10px;
     border-radius: 50px;
     font-size: 0.8rem;
@@ -95,3 +99,29 @@ body {
     display: inline-block;
 }
 
+/* Ajusta a navbar para ficar colada no topo */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    padding-top: 80px; /* Ajuste o valor para deixar espaço suficiente abaixo da navbar */
+}
+
+/* Ajusta o tamanho da navbar */
+.navbar-light .navbar-nav .nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 15px;
+}
+
+.navbar-brand img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
